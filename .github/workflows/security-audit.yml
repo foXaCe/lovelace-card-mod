@@ -1,0 +1,86 @@
+name: Security audit
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  schedule:
+    - cron: "0 6 * * *" # daily — CVEs do not wait for Monday
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  npm-audit:
+    name: npm audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      # Only production dependencies are bundled into card-mod.js and shipped to
+      # users; dev-only (build tooling) advisories do not reach end users.
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+
+  osv-scanner:
+    name: OSV-Scanner
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      # Informational: OSV covers dev + production deps via the OSV.dev database.
+      # Non-blocking — production npm advisories are already gated by npm-audit
+      # and Renovate vulnerability alerts.
+      - uses: google/osv-scanner-action/osv-scanner-action@v2.3.8
+        continue-on-error: true
+        with:
+          scan-args: |-
+            --recursive
+            --skip-git
+            ./
+
+  lockfile-freshness:
+    name: Lockfile freshness
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check package-lock.json age
+        run: |
+          set -euo pipefail
+          lock=package-lock.json
+          [ -f "$lock" ] || exit 0
+          last=$(git log -1 --format=%ct -- "$lock")
+          age=$(( ( $(date +%s) - last ) / 86400 ))
+          echo "$lock last changed $age days ago"
+          if [ "$age" -gt 90 ]; then
+            echo "::error file=$lock::$lock not refreshed in $age days — run 'npm install' to pull in security fixes"
+            exit 1
+          elif [ "$age" -gt 60 ]; then
+            echo "::warning file=$lock::$lock is aging ($age days)"
+          fi
+
+  dependency-review:
+    name: Dependency review
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: on-failure

@@ -1,5 +1,10 @@
 # card-mod 4
 
+[![GitHub Release](https://img.shields.io/github/release/foXaCe/lovelace-card-mod.svg?style=flat-square)](https://github.com/foXaCe/lovelace-card-mod/releases)
+[![License](https://img.shields.io/github/license/foXaCe/lovelace-card-mod.svg?style=flat-square)](LICENSE.txt)
+[![CI](https://img.shields.io/github/actions/workflow/status/foXaCe/lovelace-card-mod/ci.yml?branch=master&style=flat-square&label=CI)](https://github.com/foXaCe/lovelace-card-mod/actions/workflows/ci.yml)
+[![hacs](https://img.shields.io/badge/HACS-Default-orange.svg?style=flat-square)](https://github.com/hacs/integration)
+
 Allows you to apply CSS styles to various elements of the Home Assistant frontend.
 
 ## Installing
