@@ -1,5 +1,10 @@
 # card-mod 4
 
+[![GitHub Release](https://img.shields.io/github/release/foXaCe/lovelace-card-mod.svg?style=flat-square)](https://github.com/foXaCe/lovelace-card-mod/releases)
+[![License](https://img.shields.io/github/license/foXaCe/lovelace-card-mod.svg?style=flat-square)](LICENSE.txt)
+[![CI](https://img.shields.io/github/actions/workflow/status/foXaCe/lovelace-card-mod/ci.yml?branch=master&style=flat-square&label=CI)](https://github.com/foXaCe/lovelace-card-mod/actions/workflows/ci.yml)
+[![hacs](https://img.shields.io/badge/HACS-Default-orange.svg?style=flat-square)](https://github.com/hacs/integration)
+
 Allows you to apply CSS styles to various elements of the Home Assistant frontend.
 
 ## Installing
@@ -67,12 +72,12 @@ _3. Since Home Assistant 2026.2 YAML Dashboards can set `resource_mode` to eithe
 
 The table below shows the Home Assistand and Card-mod version compatability across the last 3 years.
 
-| min. Home Assistant version. | max Card-mod version|
-| -- | -- |
-| [2026.2.0](https://www.home-assistant.io/blog/2026/02/04/release-20262/) | (current) [4.2.0](https://github.com/thomasloven/lovelace-card-mod/releases/tag/v4.2.0) |
-| [2025.11.0](https://www.home-assistant.io/blog/2026/01/07/release-20261/) | [4.1.0](https://github.com/thomasloven/lovelace-card-mod/releases/tag/v4.1.0) |
-| [2025.1.0 ](https://www.home-assistant.io/blog/2025/01/03/release-20251/)| [3.4.4](https://github.com/thomasloven/lovelace-card-mod/tree/v3.4.4) |
-| [2023.10.0 ](https://www.home-assistant.io/blog/2023/10/04/release-202310/)| [3.2.3](https://github.com/thomasloven/lovelace-card-mod/tree/3.2.3) |
+| min. Home Assistant version.                                                | max Card-mod version                                                                    |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [2026.2.0](https://www.home-assistant.io/blog/2026/02/04/release-20262/)    | (current) [4.2.0](https://github.com/thomasloven/lovelace-card-mod/releases/tag/v4.2.0) |
+| [2025.11.0](https://www.home-assistant.io/blog/2026/01/07/release-20261/)   | [4.1.0](https://github.com/thomasloven/lovelace-card-mod/releases/tag/v4.1.0)           |
+| [2025.1.0 ](https://www.home-assistant.io/blog/2025/01/03/release-20251/)   | [3.4.4](https://github.com/thomasloven/lovelace-card-mod/tree/v3.4.4)                   |
+| [2023.10.0 ](https://www.home-assistant.io/blog/2023/10/04/release-202310/) | [3.2.3](https://github.com/thomasloven/lovelace-card-mod/tree/3.2.3)                    |
 
 ## Quick start
 

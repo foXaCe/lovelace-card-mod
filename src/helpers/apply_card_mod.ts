@@ -160,11 +160,14 @@ export async function apply_card_mod(
     await Promise.all([element.updateComplete]);
 
     const target =
-      element.modElement ?? shadow ? element.shadowRoot ?? element : element;
+      (element.modElement ?? shadow)
+        ? (element.shadowRoot ?? element)
+        : element;
 
     if (!target.contains(cm as any)) {
       // Prepend if set or if Lit is in a buggy state
-      const litWorkaround = (element as any)?.renderOptions?.renderBefore === null;
+      const litWorkaround =
+        (element as any)?.renderOptions?.renderBefore === null;
       if (litWorkaround) debug("Lit prepend workaround applied for:", element);
       if (cm_config?.prepend || litWorkaround) {
         target.prepend(cm as any);

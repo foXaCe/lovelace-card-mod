@@ -1,0 +1,4 @@
+node_modules/
+card-mod.js
+package-lock.json
+test/

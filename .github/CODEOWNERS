@@ -1,0 +1,8 @@
+# Default owner for everything in the repo
+* @foXaCe
+
+# CI / repo automation
+/.github/ @foXaCe
+
+# Source
+/src/ @foXaCe

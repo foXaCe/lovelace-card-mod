@@ -1,2 +1,19 @@
 node_modules/
 custom_components/
+
+# Build caches
+.rollup.cache/
+*.tsbuildinfo
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Logs
+*.log
+
+# Local env (keep the committed dev fixture test/.env)
+.env
+!test/.env

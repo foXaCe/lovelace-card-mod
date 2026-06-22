@@ -2,12 +2,24 @@
   "name": "card-mod",
   "private": true,
   "version": "4.2.1",
-  "description": "",
+  "description": "Add CSS styles to (almost) any lovelace card",
   "scripts": {
     "build": "rollup -c",
-    "watch": "rollup -c --watch"
+    "watch": "rollup -c --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "prettier --check \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\""
   },
-  "keywords": [],
+  "keywords": [
+    "home-assistant",
+    "homeassistant",
+    "hacs",
+    "lovelace",
+    "lovelace-custom-card",
+    "card-mod",
+    "css",
+    "theme"
+  ],
   "author": "Thomas Lovén",
   "license": "MIT",
   "devDependencies": {
@@ -16,6 +28,7 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "prettier": "^3.8.4",
     "rollup": "^2.79.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
