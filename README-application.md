@@ -68,33 +68,33 @@ The examples show card_mod applied to a card. Similar would also work for themes
 
 `:host(.my-class) ha-card` selector for cards loaded by Frontend. `ha-card.myclass` for custom cards using a divergent structure, or for cards loaded by custom cards.
 
-  ```yaml
-  card_mod:
-    style: |
-      :host(.my-class) ha-card,
-      ha-card.myclass {
-        background-color: red !important;
-      }
-  ```
+```yaml
+card_mod:
+  style: |
+    :host(.my-class) ha-card,
+    ha-card.myclass {
+      background-color: red !important;
+    }
+```
 
 ### Streamlined-card structure examples
 
-  ```yaml
-  card_mod:
-    style:
-      "* $": |
-        ha-card {
-          --card-background-color: red;
-        }
-  ```
+```yaml
+card_mod:
+  style:
+    "* $": |
+      ha-card {
+        --card-background-color: red;
+      }
+```
 
-  OR
+OR
 
-  ```yaml
-  card_mod:
-    style:
-      "* $ ha-card": |
-        :host {
-          --card-background-color: red;
-        }
-  ```
+```yaml
+card_mod:
+  style:
+    "* $ ha-card": |
+      :host {
+        --card-background-color: red;
+      }
+```

@@ -42,11 +42,11 @@ function template_updated(
     cache.value = "";
     if (cache.debug) {
       console.groupCollapsed(`CardMod: Template ${cache.error.level}`);
-      console.log( { 
-        template: cache.template, 
-        variables: cache.variables, 
+      console.log({
+        template: cache.template,
+        variables: cache.variables,
         value: cache.value,
-        error: cache.error
+        error: cache.error,
       });
       console.groupEnd();
     }
@@ -54,11 +54,11 @@ function template_updated(
     cache.value = result.result;
     if (cache.debug) {
       console.groupCollapsed("CardMod: Template updated");
-      console.log( { 
-        template: cache.template, 
-        variables: cache.variables, 
+      console.log({
+        template: cache.template,
+        variables: cache.variables,
         value: cache.value,
-        error: cache.error
+        error: cache.error,
       });
       console.groupEnd();
     }
@@ -97,9 +97,9 @@ export async function bind_template(
     if (template.includes("card_mod.debug")) {
       debug = true;
       console.groupCollapsed("CardMod: Binding template");
-      console.log( { 
-        template, 
-        variables
+      console.log({
+        template,
+        variables,
       });
       console.groupEnd();
     }
@@ -123,11 +123,11 @@ export async function bind_template(
   } else {
     if (cache.debug) {
       console.groupCollapsed("CardMod: Reusing template");
-      console.log( { 
-        template: cache.template, 
-        variables: cache.variables, 
+      console.log({
+        template: cache.template,
+        variables: cache.variables,
         value: cache.value,
-        error: cache.error
+        error: cache.error,
       });
       console.groupEnd();
     }
@@ -150,9 +150,9 @@ export async function unbind_template(
           console.groupCollapsed(
             "CardMod: Template unbound and will be unsubscribed after cooldown"
           );
-          console.log( { 
-            template: cache.template, 
-            variables: cache.variables
+          console.log({
+            template: cache.template,
+            variables: cache.variables,
           });
           console.groupEnd();
         }
@@ -175,9 +175,9 @@ async function unsubscribe_template(key: string) {
   }
   if (cache.debug) {
     console.groupCollapsed("CardMod: Unsubscribing template after cooldown");
-    console.log( { 
-      template: cache.template, 
-      variables: cache.variables
+    console.log({
+      template: cache.template,
+      variables: cache.variables,
     });
     console.groupEnd();
   }

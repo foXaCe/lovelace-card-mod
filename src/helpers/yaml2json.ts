@@ -18,7 +18,7 @@ const _load_yaml2json = async () => {
     await ppr.routerOptions.routes.tmp.load();
     await customElements.whenDefined("ha-panel-config");
     const hpc: any = document.createElement("ha-panel-config");
-    await hpc.routerOptions.routes['developer-tools']?.load();
+    await hpc.routerOptions.routes["developer-tools"]?.load();
     await customElements.whenDefined("developer-tools-router");
     const dtr: any = document.createElement("developer-tools-router");
     await dtr.routerOptions.routes.event.load();

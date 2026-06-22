@@ -11,12 +11,22 @@ window.addEventListener("card-mod-bootstrap", async (ev: CustomEvent) => {
       return;
     }
     const actionName = (cardMod as any).action;
-    if (actionName && typeof actionName === "string" && typeof Actions[actionName] === "function") {
+    if (
+      actionName &&
+      typeof actionName === "string" &&
+      typeof Actions[actionName] === "function"
+    ) {
       try {
         const result = (Actions as any)[actionName]();
-        if (result && typeof (result as Promise<unknown>).catch === "function") {
+        if (
+          result &&
+          typeof (result as Promise<unknown>).catch === "function"
+        ) {
           (result as Promise<unknown>).catch((error: unknown) => {
-            console.error(`Error while executing action "${actionName}":`, error);
+            console.error(
+              `Error while executing action "${actionName}":`,
+              error
+            );
           });
         }
       } catch (error) {

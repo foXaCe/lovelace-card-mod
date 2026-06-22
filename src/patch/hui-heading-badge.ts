@@ -10,7 +10,7 @@ class HuiBadgePatch extends ModdedElement {
 
   async _add_card_mod() {
     if (!this._element) return;
-    
+
     const cls = `type-${this.config?.type?.replace?.(":", "-")}`;
 
     await apply_card_mod(

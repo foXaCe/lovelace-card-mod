@@ -72,12 +72,12 @@ _3. Since Home Assistant 2026.2 YAML Dashboards can set `resource_mode` to eithe
 
 The table below shows the Home Assistand and Card-mod version compatability across the last 3 years.
 
-| min. Home Assistant version. | max Card-mod version|
-| -- | -- |
-| [2026.2.0](https://www.home-assistant.io/blog/2026/02/04/release-20262/) | (current) [4.2.0](https://github.com/thomasloven/lovelace-card-mod/releases/tag/v4.2.0) |
-| [2025.11.0](https://www.home-assistant.io/blog/2026/01/07/release-20261/) | [4.1.0](https://github.com/thomasloven/lovelace-card-mod/releases/tag/v4.1.0) |
-| [2025.1.0 ](https://www.home-assistant.io/blog/2025/01/03/release-20251/)| [3.4.4](https://github.com/thomasloven/lovelace-card-mod/tree/v3.4.4) |
-| [2023.10.0 ](https://www.home-assistant.io/blog/2023/10/04/release-202310/)| [3.2.3](https://github.com/thomasloven/lovelace-card-mod/tree/3.2.3) |
+| min. Home Assistant version.                                                | max Card-mod version                                                                    |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [2026.2.0](https://www.home-assistant.io/blog/2026/02/04/release-20262/)    | (current) [4.2.0](https://github.com/thomasloven/lovelace-card-mod/releases/tag/v4.2.0) |
+| [2025.11.0](https://www.home-assistant.io/blog/2026/01/07/release-20261/)   | [4.1.0](https://github.com/thomasloven/lovelace-card-mod/releases/tag/v4.1.0)           |
+| [2025.1.0 ](https://www.home-assistant.io/blog/2025/01/03/release-20251/)   | [3.4.4](https://github.com/thomasloven/lovelace-card-mod/tree/v3.4.4)                   |
+| [2023.10.0 ](https://www.home-assistant.io/blog/2023/10/04/release-202310/) | [3.2.3](https://github.com/thomasloven/lovelace-card-mod/tree/3.2.3)                    |
 
 ## Quick start
 

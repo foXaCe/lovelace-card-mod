@@ -91,13 +91,14 @@ export class CardMod extends LitElement {
     super.connectedCallback();
     if (this._processStylesOnConnect) {
       this._processStylesOnConnect = false;
-      this._debug("Processing styles on (Re)connect:", 
+      this._debug(
+        "Processing styles on (Re)connect:",
         "type:",
         this.type,
         "for:",
         ...((this as any)?.parentNode?.host
-        ? ["#shadow-root of:", (this as any)?.parentNode?.host]
-        : [this.parentElement ?? this.parentNode]),
+          ? ["#shadow-root of:", (this as any)?.parentNode?.host]
+          : [this.parentElement ?? this.parentNode])
       );
       this._process_styles(this.card_mod_input);
     } else {
@@ -146,7 +147,9 @@ export class CardMod extends LitElement {
 
   private async _process_styles(stl) {
     let styles =
-      typeof stl === "string" || stl === undefined ? { ".": stl ?? "" } : JSON.parse(JSON.stringify(stl));
+      typeof stl === "string" || stl === undefined
+        ? { ".": stl ?? "" }
+        : JSON.parse(JSON.stringify(stl));
 
     // Merge card_mod styles with theme styles
     const theme_styles = await get_theme(this);
@@ -197,14 +200,15 @@ export class CardMod extends LitElement {
     let thisStyle = "";
     let hasChildren = false;
 
-    this._debug("(Re)connecting:",
+    this._debug(
+      "(Re)connecting:",
       "type:",
       this.type,
       "to:",
       ...((this as any)?.parentNode?.host
-      ? ["#shadow-root of:", (this as any)?.parentNode?.host]
-      : [this.parentElement ?? this.parentNode]),
-      );
+        ? ["#shadow-root of:", (this as any)?.parentNode?.host]
+        : [this.parentElement ?? this.parentNode])
+    );
 
     this.cancelStyleChild();
 
@@ -284,7 +288,6 @@ export class CardMod extends LitElement {
     } else {
       this._style_rendered(this._styles || "");
     }
-
   }
 
   private async _disconnect() {

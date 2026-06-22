@@ -73,9 +73,7 @@ class HuiDialogEditCardPatch extends LitElement {
     );
     if (!button) return;
     button.appendChild(this._cardModIcon);
-    if (
-      JSON.stringify(this._cardConfig)?.includes("card_mod")
-    ) {
+    if (JSON.stringify(this._cardConfig)?.includes("card_mod")) {
       this._cardModIcon.style.visibility = "visible";
     } else {
       this._cardModIcon.style.visibility = "hidden";
