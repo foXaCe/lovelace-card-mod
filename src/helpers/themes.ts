@@ -10,7 +10,7 @@ function cssValueIsTrue(v: string): boolean {
   return t === "true" || t === "1" || t === "yes" || t === "on";
 }
 
-export async function get_theme(root: CardMod): Promise<CardModStyle> {
+export async function get_theme(root: CardMod): Promise<CardModStyle | null> {
   if (!root.type) return null;
 
   await themesReady();

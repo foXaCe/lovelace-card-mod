@@ -27,12 +27,12 @@ import "./mod-card";
 import "./theme-watcher";
 
 const scriptElements = document.querySelectorAll("script");
-const resources = [];
+const resources: string[] = [];
 for (const script of scriptElements) {
   if (script?.innerText?.trim()?.startsWith("import(")) {
     const imports = script.innerText.split("\n")?.map((e) => e.trim());
     for (const imp of imports) {
-      resources.push(imp.replace(/^import\(\"/, "").replace(/\"\);/, ""));
+      resources.push(imp.replace(/^import\("/, "").replace(/"\);/, ""));
     }
   }
 }

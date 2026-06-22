@@ -1,7 +1,6 @@
 import { apply_card_mod, ModdedElement } from "../helpers/apply_card_mod";
 import {
   is_patched,
-  patch_element,
   patch_prototype,
   set_patched,
 } from "../helpers/patch_function";
@@ -51,17 +50,18 @@ class HaDialogPatch extends ModdedElement {
 
     this.requestUpdate();
     this.updateComplete.then(async () => {
-      let haDialog: HTMLElement | null =
-        this.shadowRoot.querySelector("ha-dialog");
+      const shadowRoot = this.shadowRoot;
+      if (!shadowRoot) return;
+      let haDialog: HTMLElement | null = shadowRoot.querySelector("ha-dialog");
       if (!haDialog) {
-        haDialog = this.shadowRoot.querySelector("ha-md-dialog");
+        haDialog = shadowRoot.querySelector("ha-md-dialog");
       }
       if (!haDialog) {
-        haDialog = this.shadowRoot.querySelector("ha-wa-dialog");
+        haDialog = shadowRoot.querySelector("ha-wa-dialog");
       }
       if (!haDialog) {
         // Notification 'dialog' is ha-drawer
-        haDialog = this.shadowRoot.querySelector("ha-drawer");
+        haDialog = shadowRoot.querySelector("ha-drawer");
       }
       if (!haDialog) return;
 

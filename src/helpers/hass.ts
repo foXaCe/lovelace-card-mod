@@ -1,4 +1,5 @@
 import { Unpromise } from "@watchable/unpromise";
+import type { HomeAssistant } from "custom-card-helpers";
 
 export async function hass_base_el() {
   await Unpromise.race([
@@ -15,8 +16,8 @@ export async function hass_base_el() {
   return document.querySelector(element);
 }
 
-export async function hass() {
-  const base: any = await hass_base_el();
+export async function hass(): Promise<HomeAssistant> {
+  const base = (await hass_base_el()) as unknown as { hass?: HomeAssistant };
   while (!base.hass) await new Promise((r) => window.setTimeout(r, 100));
-  return base.hass;
+  return base.hass!;
 }

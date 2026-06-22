@@ -26,7 +26,7 @@ async function _selectTree(root, path, all = false) {
   while (path[path.length - 1] === "") path.pop();
 
   // For each element in the path
-  for (const [i, p] of path.entries()) {
+  for (const p of path) {
     if (p === "$") {
       await Promise.all([...el].map((e) => await_element(e)));
       el = [...el].map((e) => e.shadowRoot);

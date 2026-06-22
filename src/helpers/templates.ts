@@ -29,10 +29,7 @@ interface RenderTemplateError {
 const cachedTemplates: Record<string, CachedTemplate> = (window as any)
   .cardMod_template_cache;
 
-function template_updated(
-  key: string,
-  result: RenderTemplateResult
-): Promise<void> {
+function template_updated(key: string, result: RenderTemplateResult): void {
   const cache = cachedTemplates[key];
   if (!cache) {
     return;
@@ -88,7 +85,7 @@ export async function bind_template(
   };
 
   const cacheKey = JSON.stringify([template, variables]);
-  let cache = cachedTemplates[cacheKey];
+  const cache = cachedTemplates[cacheKey];
   if (!cache) {
     let debug = false;
     unbind_template(callback);
@@ -104,7 +101,7 @@ export async function bind_template(
       console.groupEnd();
     }
 
-    cachedTemplates[cacheKey] = cache = {
+    cachedTemplates[cacheKey] = {
       template,
       variables,
       value: "",

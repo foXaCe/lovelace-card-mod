@@ -20,7 +20,7 @@ class MoreInfoDIalogPatch extends ModdedElement {
 
     this.requestUpdate();
     this.updateComplete.then(async () => {
-      const haDialog = this.shadowRoot.querySelector("ha-dialog");
+      const haDialog = this.shadowRoot?.querySelector("ha-dialog");
       if (!haDialog) return;
 
       apply_card_mod(

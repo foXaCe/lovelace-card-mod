@@ -16,7 +16,7 @@ class ConfigElementPatch extends LitElement {
 
     // Save card_mod config for individual entities
     if (Array.isArray(newConfig.entities)) {
-      for (const [i, e] of newConfig.entities?.entries?.()) {
+      for (const [i, e] of newConfig.entities.entries()) {
         this._cardModData.entities[i] = e.card_mod;
         delete e.card_mod;
       }
@@ -26,7 +26,7 @@ class ConfigElementPatch extends LitElement {
 
     // Restore card_mod config for entities
     if (Array.isArray(newConfig.entities)) {
-      for (const [i, e] of newConfig.entities?.entries?.()) {
+      for (const [i, e] of newConfig.entities.entries()) {
         if (this._cardModData?.entities[i])
           e.card_mod = this._cardModData.entities[i];
       }
@@ -68,7 +68,7 @@ class HuiDialogEditCardPatch extends LitElement {
       this._cardModIcon.icon = "mdi:brush";
     }
 
-    const button = this.shadowRoot.querySelector(
+    const button = this.shadowRoot?.querySelector(
       "ha-button[slot=secondaryAction]"
     );
     if (!button) return;

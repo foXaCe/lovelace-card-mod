@@ -39,7 +39,7 @@ export class CardMod extends LitElement {
   @property() _rendered_styles: string = "";
   _renderer: (_: string) => void;
 
-  _cancel_style_child = [];
+  _cancel_style_child: Array<() => void> = [];
 
   _observer: MutationObserver = new MutationObserver((mutations) => {
     // MutationObserver to keep track of any changes to the parent element
@@ -146,7 +146,7 @@ export class CardMod extends LitElement {
   }
 
   private async _process_styles(stl) {
-    let styles =
+    const styles =
       typeof stl === "string" || stl === undefined
         ? { ".": stl ?? "" }
         : JSON.parse(JSON.stringify(stl));
@@ -165,16 +165,16 @@ export class CardMod extends LitElement {
     path: string,
     style,
     retries = 0
-  ): Promise<Array<Promise<CardMod>>> {
+  ): Promise<Array<Promise<CardMod | undefined>>> {
     const parent = this.parentElement || this.parentNode;
     const elements = await selectTree(parent, path, true);
     if (!elements || !elements.length) {
       if (retries > 5) throw new Error("NoElements");
-      let timeout = new Promise((resolve, reject) => {
+      const timeout = new Promise((resolve, reject) => {
         setTimeout(resolve, retries * 100);
         this._cancel_style_child.push(reject);
       });
-      await timeout.catch((e) => {
+      await timeout.catch(() => {
         throw new Error("Cancelled");
       });
       return this._style_child(path, style, retries + 1);

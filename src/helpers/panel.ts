@@ -1,6 +1,6 @@
 import { selectTree } from "./selecttree";
 
-var PanelState: Promise<any> | null = null;
+let PanelState: Promise<any> | null = null;
 
 async function _getPanel(document) {
   let _panel = await _getPanel(document);
@@ -83,14 +83,14 @@ async function _current_panel_state() {
   const panel = await _getPanel(document);
   const panelAttributes = _panelAttributes(panel);
   const viewAttributes = await _viewAttributes(panel);
-  const fullTitle = [];
+  const fullTitle: string[] = [];
   if (panelAttributes.panelTitle) {
     fullTitle.push(panelAttributes.panelTitle);
   }
   if (viewAttributes.viewTitle) {
     fullTitle.push(viewAttributes.viewTitle);
   }
-  const fullUrlPath = [];
+  const fullUrlPath: string[] = [];
   if (panelAttributes.panelUrlPath) {
     fullUrlPath.push(panelAttributes.panelUrlPath);
   }
@@ -110,9 +110,9 @@ async function _current_panel_state() {
 
 function _panel_state_update() {
   const update = async () => {
-    var panelState = await _current_panel_state();
-    var browserPath = window.location.pathname.slice(1).toLowerCase();
-    var panelPath = panelState.panel.fullUrlPath.toLowerCase();
+    let panelState = await _current_panel_state();
+    let browserPath = window.location.pathname.slice(1).toLowerCase();
+    let panelPath = panelState.panel.fullUrlPath.toLowerCase();
     let retry = 0;
     while (browserPath !== panelPath && retry++ < 200) {
       await new Promise((resolve) => setTimeout(resolve, 10));
@@ -132,6 +132,7 @@ function _panel_state_update() {
     return panelState;
   };
   PanelState = new Promise((resolve) => resolve(update()));
+  return PanelState;
 }
 
 export function getPanelState(): Promise<any> {
@@ -146,8 +147,7 @@ window.addEventListener("card-mod-bootstrap", async (ev: CustomEvent) => {
   ["popstate", "location-changed"].forEach((event) => {
     window.addEventListener(event, async () => {
       PanelState = null;
-      _panel_state_update();
-      PanelState.then(() => {
+      _panel_state_update().then(() => {
         document.dispatchEvent(
           new CustomEvent("cm_update", { detail: { variablesChanged: true } })
         );

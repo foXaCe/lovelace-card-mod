@@ -22,7 +22,6 @@ const apply = () => {
 
 @patch_element("ha-sidebar", apply)
 class SidebarPatch extends ModdedElement {
-  // @ts-ignore
   firstUpdated(_orig, ...args) {
     _orig?.(...args);
     apply_card_mod(this, "sidebar");

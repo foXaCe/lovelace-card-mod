@@ -1,4 +1,4 @@
-import { patch_element, patch_object } from "../helpers/patch_function";
+import { patch_element } from "../helpers/patch_function";
 
 import { apply_card_mod } from "../helpers/apply_card_mod";
 import { ModdedElement } from "../helpers/apply_card_mod";

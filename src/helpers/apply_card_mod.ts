@@ -33,10 +33,10 @@ interface CardModConfig {
 export async function apply_card_mod_compatible(
   element: ModdedElement,
   type: string,
-  cm_config: CardModStyle | CardModConfig = undefined, // or styles
+  cm_config: CardModStyle | CardModConfig | undefined = undefined, // or styles
   variables = {},
   shadow = true, // or deprecated
-  cls = undefined // or shadow
+  cls: string | undefined = undefined // or shadow
 ) {
   // TODO: Remove in June 2024
   // This is for backwards compatibility with Card mod version 3.3 and earlier.
@@ -107,14 +107,14 @@ export async function apply_card_mod_compatible(
 export async function apply_card_mod(
   element: ModdedElement,
   type: string,
-  cm_config: CardModConfig = undefined,
+  cm_config: CardModConfig | undefined = undefined,
   variables = {},
   shadow: boolean = true,
-  cls = undefined
+  cls: string | undefined = undefined
 ) {
   const debug = cm_config?.debug
     ? (...msg) => console.log("CardMod Debug:", ...msg)
-    : (...msg) => {};
+    : () => {};
 
   debug(
     "Applying card-mod to:",
