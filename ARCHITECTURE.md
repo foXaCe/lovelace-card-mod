@@ -50,7 +50,7 @@ helpers.
 
 Releases are automated with
 [release-please](https://github.com/googleapis/release-please). Conventional
-commits on `master` maintain a release PR that bumps `package.json` and
+commits on `main` maintain a release PR that bumps `package.json` and
 `CHANGELOG.md`; merging it tags the release and the `Release` workflow attaches
 the freshly built `card-mod.js` (and its checksum) as release assets, which HACS
 then serves to users.
