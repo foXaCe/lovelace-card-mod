@@ -1,8 +1,17 @@
+# pre-commit.ci: run as a check only, do not auto-push fix commits.
+ci:
+  autofix_prs: false
+  autoupdate_schedule: quarterly
+
+# Build artifact and lockfile must never be touched by hooks.
+exclude: '^(card-mod\.js|package-lock\.json)$'
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
       - id: check-yaml
+        args: ["--unsafe"] # allow Home Assistant custom YAML tags in test/
       - id: check-json
       - id: check-merge-conflict
       - id: end-of-file-fixer
@@ -14,5 +23,5 @@ repos:
     rev: v3.8.4
     hooks:
       - id: prettier
-        # Format only sources/config; the bundled output and lockfile are excluded.
-        exclude: "^(card-mod\\.js|package-lock\\.json|test/)"
+        # Skip HA dashboard test fixtures (kept as authored).
+        exclude: "^test/"
