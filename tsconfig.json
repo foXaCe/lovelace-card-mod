@@ -1,9 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "test", "tests"]
 }
