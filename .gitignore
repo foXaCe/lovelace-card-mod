@@ -3,7 +3,11 @@ custom_components/
 
 # Build caches
 .rollup.cache/
+.rts2_cache/
 *.tsbuildinfo
+
+# Test coverage
+coverage/
 
 # Editor / OS
 .DS_Store
