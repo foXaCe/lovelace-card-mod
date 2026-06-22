@@ -1,6 +1,6 @@
-# pre-commit.ci: run as a check only, do not auto-push fix commits.
+# pre-commit.ci: auto-fix and push formatting on PRs.
 ci:
-  autofix_prs: false
+  autofix_prs: true
   autoupdate_schedule: quarterly
 
 # Build artifact and lockfile must never be touched by hooks.
