@@ -50,12 +50,12 @@ prek install
 4. Use [Conventional Commits](https://www.conventionalcommits.org/) for the
    commit subject (`feat:`, `fix:`, `docs:`, `chore:` …) — releases and the
    changelog are generated automatically from these
-5. Open a pull request against `master`
+5. Open a pull request against `main`
 
 ## Releases
 
 Releases are automated with
 [release-please](https://github.com/googleapis/release-please): merging
-conventional commits to `master` maintains a release PR that bumps the version
+conventional commits to `main` maintains a release PR that bumps the version
 in `package.json`, updates `CHANGELOG.md` and, once merged, publishes the
 GitHub release with the built `card-mod.js` asset.
