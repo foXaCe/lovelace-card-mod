@@ -49,7 +49,7 @@ jobs:
       - name: Generate checksum
         run: sha256sum card-mod.js > card-mod.js.sha256
       - name: Upload card-mod.js to release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
           files: |
