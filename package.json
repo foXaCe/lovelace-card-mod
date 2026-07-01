@@ -37,7 +37,7 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^1.0.0",
     "@vitest/coverage-v8": "^3.2.6",
-    "custom-card-helpers": "^1.9.0",
+    "custom-card-helpers": "^2.0.0",
     "eslint": "^10.5.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.7.0",
