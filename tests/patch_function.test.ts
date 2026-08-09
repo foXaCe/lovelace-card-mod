@@ -3,6 +3,7 @@ import {
   set_patched,
   is_patched,
   patch_object,
+  patch_element,
 } from "../src/helpers/patch_function";
 
 describe("set_patched / is_patched", () => {
@@ -28,6 +29,42 @@ describe("set_patched / is_patched", () => {
     expect(is_patched(el)).toBe(true);
     // A different element of the same constructor shares the patched flag.
     expect(is_patched(document.createElement("div"))).toBe(true);
+  });
+});
+
+describe("patch_element duplicate protection", () => {
+  beforeEach(() => {
+    const state = (window as any).cardMod_patch_state;
+    for (const key in state) delete state[key];
+    (window as any).cm_patch_warning = false;
+  });
+
+  it("patches an element only once and warns on a second attempt", () => {
+    class FakeCard {}
+    FakeCard.prototype.greet = () => "hello";
+
+    const patch1 = patch_element(FakeCard)(
+      class {
+        greet(original: () => string) {
+          return original().toUpperCase();
+        }
+      }
+    );
+    // Second patch attempt on the same constructor is a no-op.
+    const patch2 = patch_element(FakeCard)(
+      class {
+        greet(original: () => string) {
+          return original() + "!";
+        }
+      }
+    );
+
+    expect(patch1).toBeUndefined();
+    expect(patch2).toBeUndefined();
+
+    // The first patch stuck, the duplicate was rejected.
+    expect(new FakeCard().greet()).toBe("HELLO");
+    expect((window as any).cm_patch_warning).toBe(true);
   });
 });
 
