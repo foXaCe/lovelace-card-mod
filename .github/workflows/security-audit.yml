@@ -42,7 +42,7 @@ jobs:
       # Informational: OSV covers dev + production deps via the OSV.dev database.
       # Non-blocking — production npm advisories are already gated by npm-audit
       # and Renovate vulnerability alerts.
-      - uses: google/osv-scanner-action/osv-scanner-action@v2.5.0
+      - uses: google/osv-scanner-action/osv-scanner-action@v2.5.1
         continue-on-error: true
         with:
           scan-args: |-
