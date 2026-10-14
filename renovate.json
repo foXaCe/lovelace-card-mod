@@ -12,12 +12,8 @@
     ":timezone(Europe/Paris)",
     "schedule:nonOfficeHours"
   ],
-  "labels": [
-    "dependencies"
-  ],
-  "assignees": [
-    "foXaCe"
-  ],
+  "labels": ["dependencies"],
+  "assignees": ["foXaCe"],
   "prConcurrentLimit": 10,
   "prHourlyLimit": 4,
   "rangeStrategy": "auto",
@@ -30,87 +26,47 @@
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,
-    "schedule": [
-      "before 6am on monday"
-    ]
+    "schedule": ["before 6am on monday"]
   },
   "vulnerabilityAlerts": {
-    "labels": [
-      "security",
-      "dependencies"
-    ],
+    "labels": ["security", "dependencies"],
     "minimumReleaseAge": null,
-    "schedule": [
-      "at any time"
-    ]
+    "schedule": ["at any time"]
   },
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "patch",
-        "pin",
-        "digest"
-      ],
+      "matchUpdateTypes": ["patch", "pin", "digest"],
       "automerge": true,
       "platformAutomerge": true
     },
     {
-      "matchManagers": [
-        "github-actions"
-      ],
-      "labels": [
-        "dependencies",
-        "github-actions"
-      ],
+      "matchManagers": ["github-actions"],
+      "labels": ["dependencies", "github-actions"],
       "automerge": true,
       "platformAutomerge": true
     },
     {
-      "matchManagers": [
-        "npm"
-      ],
-      "labels": [
-        "dependencies",
-        "javascript"
-      ]
+      "matchManagers": ["npm"],
+      "labels": ["dependencies", "javascript"]
     },
     {
-      "matchManagers": [
-        "pre-commit"
-      ],
-      "labels": [
-        "dependencies",
-        "pre-commit"
-      ]
+      "matchManagers": ["pre-commit"],
+      "labels": ["dependencies", "pre-commit"]
     },
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "platformAutomerge": true
     },
     {
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "labels": [
-        "dependencies",
-        "major",
-        "needs-review"
-      ],
+      "matchUpdateTypes": ["major"],
+      "labels": ["dependencies", "major", "needs-review"],
       "minimumReleaseAge": "7 days"
     },
     {
       "description": "Tout ce qui monte se fusionne seul quand la CI est verte (op\u00e9rateur, 2026-10-14)",
-      "matchUpdateTypes": [
-        "minor",
-        "major"
-      ],
+      "matchUpdateTypes": ["minor", "major"],
       "automerge": true,
       "platformAutomerge": true
     }
